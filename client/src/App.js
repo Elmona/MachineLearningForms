@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
+import './index.css'
+import React from 'react'
+import * as css from './App.css.js'
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div css={css.Container}>
+      <div css={css.Wrapper}>
+        <p>test</p>
+        <form css={css.form}>
+          <input type='text'></input>
+          <input type='text'></input>
+          <input type='text'></input>
+          <input type='button' value='Send' />
+        </form>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
