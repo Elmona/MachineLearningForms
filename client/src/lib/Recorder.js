@@ -1,9 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React, { useState } from 'react'
-
 import distance from './mouseDistance'
-
 
 const Recorder = ({ style, ...props }) => {
 

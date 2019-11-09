@@ -1,16 +1,27 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import './index.css'
-// import React, { useState } from 'react'
 import * as css from './App.css.js'
+import 'antd/dist/antd.css'
 
+import { Button, Input, Row, Col } from 'antd'
 import Recorder from './lib/Recorder'
 
-const Input = ({ name, label }) =>
-  <div css={{ display: 'flex', flex: '1', paddingBottom: '15px' }}>
-    <label for={name} css={{ paddingRight: '20px' }}>{label}</label>
-    <input type='text' name={name} />
-  </div>
+const InputElement = ({ name, label }) =>
+  <Row>
+    <Col span={8}>
+      <p style={{ textAlign: 'right', paddingRight: '12px' }}>
+        {label}
+      </p>
+    </Col>
+    <Col span={12}>
+      <Input
+        css={{ width: '100%' }}
+        type='text'
+        name={name}
+      />
+    </Col>
+  </Row>
 
 const App = () => (
   <div css={css.Container}>
@@ -19,19 +30,34 @@ const App = () => (
     >
       <p>test</p>
       <form css={css.form}>
-        <Input
+        <InputElement
           name='surename'
           label='First name:'
         />
-        <Input
+        <InputElement
           name='lastname'
           label='Last name:'
         />
-        <Input
+        <InputElement
           name='email'
           label='E-mail adress:'
         />
-        <input type='button' value='Send' />
+        <Row gutter={32}>
+          <Col span={8} push={6}>
+            <Button
+              css={{ width: '100%', marginTop: '20px' }}
+              type='primary'
+              onClick={() => {
+                fetch('/ping')
+                  .then(res => res.json())
+                  .then(res => console.log(res))
+              }}
+
+            >
+              Send
+            </Button>
+          </Col>
+        </Row>
       </form>
     </Recorder>
   </div>
