@@ -1,24 +1,40 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import './index.css'
-import React from 'react'
+// import React, { useState } from 'react'
 import * as css from './App.css.js'
 
-const App = () => {
+import Recorder from './lib/Recorder'
 
-  return (
-    <div css={css.Container}>
-      <div css={css.Wrapper}>
-        <p>test</p>
-        <form css={css.form}>
-          <input type='text'></input>
-          <input type='text'></input>
-          <input type='text'></input>
-          <input type='button' value='Send' />
-        </form>
-      </div>
-    </div>
-  )
-}
+const Input = ({ name, label }) =>
+  <div css={{ display: 'flex', flex: '1', paddingBottom: '15px' }}>
+    <label for={name} css={{ paddingRight: '20px' }}>{label}</label>
+    <input type='text' name={name} />
+  </div>
+
+const App = () => (
+  <div css={css.Container}>
+    <Recorder
+      style={css.Wrapper}
+    >
+      <p>test</p>
+      <form css={css.form}>
+        <Input
+          name='surename'
+          label='First name:'
+        />
+        <Input
+          name='lastname'
+          label='Last name:'
+        />
+        <Input
+          name='email'
+          label='E-mail adress:'
+        />
+        <input type='button' value='Send' />
+      </form>
+    </Recorder>
+  </div>
+)
 
 export default App
